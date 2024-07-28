@@ -1,10 +1,22 @@
-# Use the official Python 3.11 Alpine base image
-FROM python:3.11-alpine
+FROM python:3.10-rc-alpine3.12
 
+
+
+
+
+# update apk repo
+RUN echo "http://dl-4.alpinelinux.org/alpine/v3.12/main" >> /etc/apk/repositories && \
+    echo "http://dl-4.alpinelinux.org/alpine/v3.12/community" >> /etc/apk/repositories
+
+RUN apk add --no-cache tzdata
 ENV TZ Europe/London
+ENV PYTHONUNBUFFERED=1
 
-# Install required system dependencies
-RUN apk add --no-cache gcc musl-dev
+
+
+# upgrade pip
+RUN pip install --upgrade pip
+
 
 # Set the working directory in the container
 WORKDIR /app
@@ -13,7 +25,7 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir fastapi uvicorn
+RUN pip install  fastapi uvicorn
 
 # Make port 8000 available to the world outside this container
 EXPOSE 80
