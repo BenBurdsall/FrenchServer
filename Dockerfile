@@ -3,6 +3,9 @@ FROM python:3.11-alpine
 
 ENV TZ Europe/London
 
+# Install required system dependencies
+RUN apk add --no-cache gcc musl-dev
+
 # Set the working directory in the container
 WORKDIR /app
 
