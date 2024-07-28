@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Sand Timer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .sand-container {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            margin-bottom: 50px; /* Space between timer and text */
+            border: 5px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #ddd;
+        }
+        .sand {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .sand-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(to right, #00ff00, #006400); /* Radioactive green gradient */
+            animation: fill 4s linear forwards; /* Duration set to 4 seconds */
+        }
+        @keyframes fill {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        .text-container {
+            text-align: center;
+        }
+        .centered-text {
+            color: red;
+            font-size: 5em;
+            margin: 0;
+            padding: 0;
+        }
+        .cow-text {
+            color: black;
+            font-size: 3em;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            margin-top: 50px; /* Space between "La vache" and "Cow" */
+        }
+        .show-cow {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sand-container">
+            <div class="sand">
+                <div class="sand-inner"></div>
+            </div>
+        </div>
+        <div class="text-container">
+            <h1>#QNO</h1>
+            <div class="centered-text">#QUESTION</div>
+            <div class="cow-text" id="cow-text">#ANSWER</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sandInner = document.querySelector('.sand-inner');
+            const cowText = document.getElementById('cow-text');
+
+            sandInner.addEventListener('animationend', () => {
+                cowText.classList.add('show-cow');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000); // Reload the page after 3 seconds
+            });
+        });
+    </script>
+</body>
+</html>
