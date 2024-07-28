@@ -1,12 +1,19 @@
-FROM python:3.10-rc-alpine3.12
+
+
+# Use the official Python 3.11 Alpine base image for ARM architecture
+FROM python:3.11-alpine
+
+# Install required system dependencies
+RUN apk add --no-cache gcc musl-dev libffi-dev
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
 
 
 
-
-
-# update apk repo
-RUN echo "http://dl-4.alpinelinux.org/alpine/v3.12/main" >> /etc/apk/repositories && \
-    echo "http://dl-4.alpinelinux.org/alpine/v3.12/community" >> /etc/apk/repositories
 
 RUN apk add --no-cache tzdata
 ENV TZ Europe/London
@@ -26,7 +33,12 @@ COPY . /app
 
 # Install any needed packages specified in requirements.txt
 
-RUN pip3 install --upgrade pip setuptools wheel && pip3 install -r requirements.txt
+# Install Python dependencies
+RUN pip install --no-cache-dir fastapi uvicorn
+
+
+
+#RUN pip3 install --upgrade pip setuptools wheel && pip3 install -r requirements.txt
 
 # Make port 8000 available to the world outside this container
 EXPOSE 80
