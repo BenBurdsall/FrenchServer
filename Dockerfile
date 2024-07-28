@@ -25,7 +25,8 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip3 install --upgrade pip setuptools wheel && pip3  install  fastapi uvicorn
+
+RUN pip3 install --upgrade pip setuptools wheel && pip3 install -r requirements.txt
 
 # Make port 8000 available to the world outside this container
 EXPOSE 80
