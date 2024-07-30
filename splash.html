@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Quizz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .quiz-title {
+            color: red;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        .form-group input[type="radio"] {
+            margin-right: 10px;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .inline-fields {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .inline-fields label {
+            margin: 0;
+        }
+        .inline-fields input[type="text"] {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-title">GCSE French Quiz</div>
+        <h1>Select Options</h1>
+        <form action="/questions" method="POST">
+            <div class="form-group">
+                <label>Select Language:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="language" value="fr_to_en" checked> French to English</label>
+                    <label><input type="radio" name="language" value="en_to_fr"> English to French</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Select Type:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="type" value="true_random"> True Random words</label>
+                    <label><input type="radio" name="type" value="repeated_batch" checked> Repeated Batch</label>
+                    <label><input type="radio" name="type" value="verbs" > Verbs only</label>
+                </div>
+            </div>
+            <div class="form-group inline-fields">
+                <label for="batch_size">Batch Size:</label>
+                <input type="text" id="batch_size" name="batch_size" value="30">
+                <label for="repeat_times">Repeat Times:</label>
+                <input type="text" id="repeat_times" name="repeat_times" value="3">
+            </div>
+            <button type="submit">Lets start</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 467134426671.dkr.ecr.eu-west-1.amazonaws.com
+docker build -t frenchserver:v2 .
+docker tag frenchserver:v2 467134426671.dkr.ecr.eu-west-1.amazonaws.com/frenchserver:latest
+docker push 467134426671.dkr.ecr.eu-west-1.amazonaws.com/frenchserver:latest

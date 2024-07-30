@@ -1,1 +1,1 @@
-docker run --restart unless-stopped    --name IPCAMSMONITOR -v /home/pi/dockerconfig/ippip3  install  fastapi uvicorn      cams/config:/root/app/config -v /home/pi/FTP/data:/root/app/data -d ipcams_monitor:v1
+docker run --restart unless-stopped    --name IPCAMSMONITOR -v /home/pi/dockerconfig/ippip3  install  fastapi uvicorn      cams/config:/root/app/config -v /home/pi/FTP/data:/root/app/data -d ipcams_monitor:v1doc
