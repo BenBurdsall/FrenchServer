@@ -818,7 +818,6 @@ foundation  = [
     ["demi-frère le", "half-brother"],
     ["demi-sœur la", "half-sister"],
     ["se disputer", "to argue"],
-    ["dire", "to say, tell"],
     ["égoïste", "selfish"],
     ["ensemble", "together"],
     ["s’entendre (avec)", "to get on (with)"],
@@ -1718,7 +1717,10 @@ harderFreToEng = [
     ["Colère", "Anger"],
     ["Stress", "Stress"],
     ["Calme", "Calm"],
-    ["Santé mentale", "Mental Health"]]
+    ["Santé mentale", "Mental Health"],
+    ["peine la", "the bother"],
+    ["la confiture", "jam"]
+]
 
 
 freToEngVerbs = [
@@ -1738,14 +1740,12 @@ freToEngVerbs = [
     ["désirer", "to want"],
     ["détester", "to hate"],
     ["espérer", "to hope"],
-    ["peine la", "the bother"],
     ["penser", "to think"],
     ["préférer", "to prefer"],
     ["promettre", "to promise"],
     ["sembler", "to seem"],
     ["supporter", "to put up with"],
     ["dire", "to say"],
-    ["confiture la", "jam"],
     ["courir", "to run"],
     ["coûter", "to cost"],
     ["(se) casser", "to break (a limb)"],
@@ -1755,7 +1755,6 @@ freToEngVerbs = [
     ["Être", "To be"],
     ["Avoir", "To have"],
     ["Faire", "To do / make"],
-    ["Dire", "To say"],
     ["Aller", "To go"],
     ["Pouvoir", "To be able to"],
     ["Vouloir", "To want"],
