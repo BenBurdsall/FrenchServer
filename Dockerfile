@@ -7,9 +7,10 @@ RUN apk add --no-cache gcc musl-dev
 # Set the working directory in the container
 WORKDIR /app
 
+RUN mkdir /app/dict
 # Copy the current directory contents into the container at /app
 COPY . /app
-
+COPY  ./dict /app/dict
 # Install Python dependencies
 RUN pip install --no-cache-dir fastapi uvicorn  python-multipart
 

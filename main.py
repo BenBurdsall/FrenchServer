@@ -1,5 +1,6 @@
 
 from frenchQuizzGen import frenchQuizzGen
+from vocabfr import masterDictionary, totalWordCount
 import logging
 import sys
 
@@ -11,36 +12,35 @@ from pydantic import BaseModel
 class FormData(BaseModel):
     language: str
     type: str
+    category: str
     batch_size: int
     repeat_times: int
 
 frenchQuizz = frenchQuizzGen()
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-handler = logging.StreamHandler(sys.stdout)
-handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+
 app = FastAPI()
 counter = 0
 
 # Read the HTML file
 logger.info("Tying to access HTML template ")
-try:
-    with open("frenchpage.html", "r") as file:
-        htmltemplate = file.read()
-except FileNotFoundError as fex:
-    logger.error("Could not load template file - check path")
-    htmltemplate = "None - No page loaded "
 
-try:
-    with open("splash.html", "r") as file:
-        splashPage = file.read()
-except FileNotFoundError as fex:
-    logger.error("Could not load template file - check path")
-    htmltemplate = "None - No page loaded "
 
+def prepareSplash(splashTemplate):
+    marker = "<! –– INSERT CATEGORY ––>"
+
+    index = splashTemplate.find(marker)
+    if index > 0:
+        index -= 2
+        topPage = splashTemplate[0:index]
+        bottomPage = splashTemplate[index:]
+        topPage = topPage + f' \n <label><input type="radio" name="category" value="ALL" checked>ALL  -  ({totalWordCount} words)</label>'
+
+        for cateory in masterDictionary.keys():
+            topPage = topPage + f' \n       <label><input type="radio" name="category" value="{cateory}">{cateory}  -  ({len(masterDictionary[cateory]) } words)</label>'
+        topPage = topPage + bottomPage
+    return topPage
 
 
 
@@ -51,6 +51,7 @@ except FileNotFoundError as fex:
 async def handle_questions(
     language: str = Form(...),
     type: str = Form(...),
+    category: str = Form(...),
     batch_size: int = Form(30),
     repeat_times: int = Form(3)
 ):
@@ -58,42 +59,43 @@ async def handle_questions(
     page = {
     "language" : language,
     "type" : type,
+    "categry" : category,
     "batch_size" : str(batch_size),
     "repeat" : str(repeat_times)
 
     }
-    logger.info("Params posted are {page")
+    logger.info(f"Params posted are {page}")
     languageCode = "ENG"
     if language=="fr_to_en":
         languageCode = "FRE"
 
     if type == "true_random":
-        newURL = f"/random/{languageCode}"
-    elif type=='verbs':
-        newURL = f"/random/{languageCode}?filter=verbs"
-    elif type=='chores':
-        newURL = f"/random/{languageCode}?filter=chores"
+        newURL = f"/random/{languageCode}?filter={category}"
     else:
         frenchQuizz.noBatchRepeats = repeat_times
         frenchQuizz.batchSize = batch_size
-        frenchQuizz.newBatch()
-        newURL = f"/batch/{languageCode}"
+        frenchQuizz.newBatch(category)
+        newURL = f"/batch/{languageCode}?filter={category}"
 
 
     return RedirectResponse(url=newURL ,status_code=303)
 
 
 @app.get("/batch/{language}", response_class=HTMLResponse)
-async def batchMode(language : str ):
+async def batchMode(language : str, filter : str = None ):
     global  counter
     page = htmltemplate
+
+
+    if filter is None:
+        filter = "ALL"
 
     logger.info(f"Batch  mode, requested language is {language}, batchSize is {frenchQuizz.batchSize}, repeats {frenchQuizz.noBatchRepeats} ")
     if language not in [frenchQuizzGen.ENGLISH, frenchQuizzGen.FRENCH]:
         logger.warning("Not recognised langauge - setting to French")
         language = frenchQuizzGen.FRENCH
 
-    tuple = frenchQuizz.nextQuestionFromBatch(language)
+    tuple = frenchQuizz.nextQuestionFromBatch(language,filter)
     question, answer = tuple
 
     counter = counter + 1
@@ -108,21 +110,22 @@ async def randomQuizz(language : str,
     global  counter
     page = htmltemplate
 
+    if filter is None:
+        filter = "ALL"
+
     logger.info(f"Random  mode, requested language is {language}")
     if language not in [frenchQuizzGen.ENGLISH, frenchQuizzGen.FRENCH]:
         logger.warning("Not recognised langauge - setting to French")
         language = frenchQuizzGen.FRENCH
 
-    if filter == "verbs":
-        logger.info("selecting from verbs only")
-        tuple = frenchQuizz.nextQuestionVerb(language)
-        mode ="Only Verbs"
-    elif filter == "chores":
-        mode = "Only Chores"
-        tuple = frenchQuizz.nextQuestionChores(language)
+    tuple = frenchQuizz.nextQuestion(language, filter)
+    questionLeft = len(frenchQuizz.workingSet)
+    if filter ==frenchQuizz.ALL:
+        size = totalWordCount
     else:
-        tuple = frenchQuizz.nextQuestion(language)
-        mode = "All words Randomly"
+        size = len(masterDictionary[filter])
+    mode = f"Category {filter} (size {size}) - {questionLeft} questions left"
+
     question, answer = tuple
 
     counter = counter + 1
@@ -131,8 +134,30 @@ async def randomQuizz(language : str,
     return page
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
+    global frenchQuizz
     page = splashPage
+    frenchQuizz = frenchQuizzGen()
+
     return HTMLResponse(content=page)
+
+
+
+try:
+    with open("frenchpage.html", "r") as file:
+        htmltemplate = file.read()
+except FileNotFoundError as fex:
+    logger.error("Could not load template file - check path")
+    htmltemplate = "None - No page loaded "
+
+try:
+    with open("splash.html", "r") as file:
+        splashPageTemplate = file.read()
+        splashPage = prepareSplash(splashPageTemplate)
+except FileNotFoundError as fex:
+    logger.error("Could not load template file - check path")
+    splashPage = "None - No page loaded "
+
+
 
 
 if __name__ == "__main__":

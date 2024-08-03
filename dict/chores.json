@@ -1,0 +1,21 @@
+ [
+    ["Faire le ménage", "to do the housework"],
+    ["Faire la vaisselle", "to do the dishes"],
+    ["Passer l'aspirateur", "to vacuum"],
+    ["Faire la lessive", "to do the laundry"],
+    ["Repasser", "to iron"],
+    ["Faire le lit", "to make the bed"],
+    ["Balayer", "to sweep"],
+    ["Sortir la poubelle", "to take out the trash"],
+    ["Faire les courses", "to do the grocery shopping"],
+    ["Faire la Cuisine", "to cook"],
+    ["Ranger", "to tidy up"],
+    ["Épousseter", "to dust"],
+    ["Laver les fenêtres", "to wash the windows"],
+    ["Tondre la pelouse", "to mow the lawn"],
+    ["Arroser les plantes", "to water the plants"],
+    ["Changer les draps", "to change the sheets"],
+    ["Laver le sol", "to mop the floor"],
+    ["Débarrasser la table", "to clear the table"],
+    ["Faire la poussière", "to dust"]
+]

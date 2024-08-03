@@ -1,0 +1,21 @@
+[
+    ["Télévision", "Television"],
+    ["Film", "Film / Movie"],
+    ["Série", "Series"],
+    ["Épisode", "Episode"],
+    ["Acteur", "Actor"],
+    ["Actrice", "Actress"],
+    ["Scénario", "Script / Screenplay"],
+    ["Producteur", "Producer"],
+    ["Productrice", "Producer (female)"],
+    ["Caméra", "Camera"],
+    ["Monteur", "Editor"],
+    ["Montage", "Editing"],
+   ["la télé Rélalité", "reality TV"],
+    ["Bande-annonce", "Trailer"],
+    ["Salle de cinéma", "Movie theater"],
+    ["Billet", "Ticket"],
+    ["Chanson", "Song"],
+    ["Musique", "Music"],
+    ["Publicité", "Commercial / Advertisement"]
+]

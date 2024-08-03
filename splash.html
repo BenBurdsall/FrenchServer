@@ -84,6 +84,42 @@
         button:hover {
             background-color: #555;
         }
+        .form-group.bordered {
+    border: 2px solid #ccc; /* Light gray border */
+    padding: 10px;          /* Space inside the border */
+    border-radius: 5px;    /* Optional: rounded corners */
+    margin: 10px 0;        /* Space outside the border */
+    background-color: #f9f9f9; /* Optional: background color */
+}
+
+.category-group .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.category-group .radio-group label {
+    flex: 1 1 calc(50% - 10px); /* Two columns with some gap */
+    box-sizing: border-box;     /* Include padding and border in the element's total width and height */
+    font-size: 14px;            /* Font size for category labels */
+}
+
+
+ @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            .inline-fields {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .inline-fields input[type="text"] {
+                width: auto;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -98,21 +134,31 @@
                     <label><input type="radio" name="language" value="en_to_fr"> English to French</label>
                 </div>
             </div>
-            <div class="form-group">
-                <label>Select Type:</label>
+            <div class="form-group bordered">
+                <label>Select Mode Type:</label>
                 <div class="radio-group">
                     <label><input type="radio" name="type" value="true_random"> True Random words</label>
                     <label><input type="radio" name="type" value="repeated_batch" checked> Repeated Batch</label>
-                    <label><input type="radio" name="type" value="verbs" > Verbs only</label>
-                    <label><input type="radio" name="type" value="chores" > Chores only</label>
                 </div>
-            </div>
-            <div class="form-group inline-fields">
+                 <div class="form-group inline-fields">
                 <label for="batch_size">Batch Size:</label>
                 <input type="text" id="batch_size" name="batch_size" value="30">
                 <label for="repeat_times">Repeat Times:</label>
                 <input type="text" id="repeat_times" name="repeat_times" value="3">
             </div>
+            </div>
+
+
+
+              <div class="form-group category-group">
+                <label>Select Category:</label>
+                  <div class="radio-group">
+
+                <! –– INSERT CATEGORY ––>
+
+                  </div>
+              </div>
+
             <button type="submit">Lets start</button>
         </form>
     </div>
