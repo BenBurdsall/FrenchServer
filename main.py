@@ -71,6 +71,8 @@ async def handle_questions(
         newURL = f"/random/{languageCode}"
     elif type=='verbs':
         newURL = f"/random/{languageCode}?filter=verbs"
+    elif type=='chores':
+        newURL = f"/random/{languageCode}?filter=chores"
     else:
         frenchQuizz.noBatchRepeats = repeat_times
         frenchQuizz.batchSize = batch_size
@@ -115,6 +117,9 @@ async def randomQuizz(language : str,
         logger.info("selecting from verbs only")
         tuple = frenchQuizz.nextQuestionVerb(language)
         mode ="Only Verbs"
+    elif filter == "chores":
+        mode = "Only Chores"
+        tuple = frenchQuizz.nextQuestionChores(language)
     else:
         tuple = frenchQuizz.nextQuestion(language)
         mode = "All words Randomly"

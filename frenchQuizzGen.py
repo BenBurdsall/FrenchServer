@@ -1,4 +1,4 @@
-from vocabfr import totalFreToEng, freToEngVerbs
+from vocabfr import totalFreToEng, freToEngVerbs, chores
 import logging
 import random
 
@@ -17,6 +17,7 @@ class frenchQuizzGen:
         self.workingBatch = []
         self.wordsInBatch  = 0
         self.workingVerbs = freToEngVerbs.copy()
+        self.workingChores = chores.copy()
 
 
     def genderFormat(self,word):
@@ -88,6 +89,15 @@ class frenchQuizzGen:
             self.logger.info("Run out  of Verbs, reinitialising word list")
             self.workingVerbs = freToEngVerbs.copy()
         tuple  =self.nextQuestionGeneric(inLanguage,self.workingVerbs)
+        return tuple
+
+    def nextQuestionChores(self, inLanguage=FRENCH):
+        totalWords = len(self.workingChores)
+        self.logger.info(f"Number of Chores in working set is {totalWords}")
+        if totalWords == 0:
+            self.logger.info("Run out  of Chores, reinitialising word list")
+            self.workingVerbs = chores.copy()
+        tuple = self.nextQuestionGeneric(inLanguage, self.workingChores)
         return tuple
 
     # Gets the next question, in the language specified, returns a tuple of the question and then the answer
