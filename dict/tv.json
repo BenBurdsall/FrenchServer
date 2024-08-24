@@ -11,11 +11,15 @@
     ["Caméra", "Camera"],
     ["Monteur", "Editor"],
     ["Montage", "Editing"],
-   ["la télé Rélalité", "reality TV"],
     ["Bande-annonce", "Trailer"],
     ["Salle de cinéma", "Movie theater"],
     ["Billet", "Ticket"],
     ["Chanson", "Song"],
     ["Musique", "Music"],
-    ["Publicité", "Commercial / Advertisement"]
+    ["Publicité", "Commercial / Advertisement"],
+    ["un télé-crochet","a talent show"],
+    ["divertissantes", "entertaining"],
+    ["les jeux télévisés ","Game Show"],
+    ["la télé-réalité" , "Reality TV"]
 ]
+

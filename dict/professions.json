@@ -17,5 +17,6 @@
     ["Chanteur", "Singer"],
     ["Chanteuse", "Female singer"],
     ["Cuisinier", "Chef"],
-    ["Serveur", "Waiter"]
+    ["Serveur", "Waiter"],
+     ["entretien", "interview"]
  ]

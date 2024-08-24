@@ -1,6 +1,7 @@
 from vocabfr import totalFreToEng, masterDictionary
 import logging
 import random
+from QuestionDataObject import questionDataObject
 
 class frenchQuizzGen:
 
@@ -8,16 +9,12 @@ class frenchQuizzGen:
     FRENCH  = "FRE"
     ALL = "ALL"
 
-    def __init__(self):
+    def __init__(self, qDO : questionDataObject):
         self.logger = logging.getLogger(__name__)
-        self.workingSet = []
-        self.repeatBatch = 1
-        self.batchSize = 30
-        self.noBatchRepeats = 3
-        self.repeatBatchCount = self.noBatchRepeats
-        self.workingBatch = []
-        self.wordsInBatch  = 0
+        self.questionDO = qDO
 
+
+    # Sets the Data conte
 
     def genderFormat(self,word):
 
@@ -33,66 +30,66 @@ class frenchQuizzGen:
                     word = "l’ " + word[0:-3]
         return word
 
-    # Creates a new batch of cards from the total set, set the repeat count back to max
-    def newBatch(self,filter):
-        self.batch = []
-        totalWords = len(self.workingSet)
-        self.repeatBatchCount = self.noBatchRepeats
-        if totalWords < self.batchSize:
+    # Creates a new batch of cards from the total set, set the repeat count back to max - updates the questionDataObject passed
+    def newBatch(self,filter,qDO : questionDataObject):
+        qDO.batch = []
+        totalWords = len(qDO.workingSet)
+        qDO.repeatBatchCount = qDO.noBatchRepeats
+        if totalWords < qDO.batchSize:
             self.logger.info("Cannot create a complete batch - Run out  of words, reinitialising word list")
             if filter== frenchQuizzGen.ALL:
                 self.logger.info("Combining all categories")
-                self.workingSet = totalFreToEng.copy()
+                qDO.workingSet = totalFreToEng.copy()
             else:
                 self.logger.info(f"Setting category to {filter}")
-                self.workingSet = masterDictionary[filter].copy()
+                qDO.workingSet = masterDictionary[filter].copy()
 
         # fill up the batch master list with words taking from working list
-        for count in range(0,self.batchSize):
-            totalWords = len(self.workingSet)
+        for count in range(0,qDO.batchSize):
+            totalWords = len(qDO.workingSet)
             choiceIndex = random.randint(0, totalWords - 1)
-            pair = self.workingSet[choiceIndex]
-            self.batch.append(pair)
-            self.workingSet.remove(pair)
-            if len(self.workingSet) == 0:
+            pair =qDO.workingSet[choiceIndex]
+            qDO.batch.append(pair)
+            qDO.workingSet.remove(pair)
+            if len(qDO.workingSet) == 0:
                 break
-        self.workingBatch = self.batch.copy()
-        self.logger.info(f"A new batch has been created from the remaining working set, consisting of {self.batch}")
+        qDO.workingBatch = qDO.batch.copy()
+        self.logger.info(f"A new batch has been created from the remaining working set, consisting of {qDO.batch}")
 
 
 
     # draws a next qusestion from batch mode - if the working batch is empty it will recycle the batch a fixed number of times
     def nextQuestionFromBatch(self,inLanguage,filter):
-        totalWords = len(self.workingBatch)
-        batchWords = len(self.batch)
+        totalWords = len(self.questionDO.workingBatch)
+        batchWords = len(self.questionDO.batch)
         self.logger.info(f"working batch {totalWords}, main batch {batchWords} ")
         if totalWords == 0:
             self.logger.info("Run out  of words, reinitialising word list for batch")
-            self.repeatBatchCount -=1
-            if self.repeatBatchCount > 0:
-                self.logger.info(f"current batch is finished, repeating, reseting batch to {self.batch}")
-                self.workingBatch = self.batch.copy()  # reset the working batch - back the current batch
+            self.questionDO.repeatBatchCount -=1
+            if self.questionDO.repeatBatchCount > 0:
+                self.logger.info(f"current batch is finished, repeating, reseting batch to {self.questionDO.batch}")
+                self.questionDO.workingBatch = self.questionDO.batch.copy()  # reset the working batch - back the current batch
             else:
                 self.logger.info("Run out  of words, creating a new batch")
-                self.newBatch(filter)
+                self.newBatch(filter.self.questionDO)
 
-        tuple = self.nextQuestionGeneric(inLanguage, self.workingBatch)
-        self.wordsInBatch = len(self.workingBatch)
+        tuple = self.nextQuestionGeneric(inLanguage, self.questionDO.workingBatch)
+        self.questionDO.wordsInBatch = len(self.questionDO.workingBatch)
         return tuple
 
     def nextQuestion(self, inLanguage, filter):
-        totalWords = len(self.workingSet)
+        totalWords = len(self.questionDO.workingSet)
         self.logger.info(f"Number of words in working set is {totalWords}")
         if totalWords == 0:
             self.logger.info("Run out  of words, reinitialising word list")
             if filter== frenchQuizzGen.ALL:
                 self.logger.info(f"combining all categories")
-                self.workingSet = totalFreToEng.copy()
+                self.questionDO.workingSet = totalFreToEng.copy()
             else:
                 self.logger.info(f"Setting category to {filter}")
-                self.workingSet = masterDictionary[filter].copy()
+                self.questionDO.workingSet = masterDictionary[filter].copy()
 
-        tuple  =self.nextQuestionGeneric(inLanguage,self.workingSet)
+        tuple  =self.nextQuestionGeneric(inLanguage,self.questionDO.workingSet)
         return tuple
 
 
