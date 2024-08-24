@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Form, Request, Query
 from fastapi.responses import HTMLResponse, RedirectResponse
-from pydantic import BaseModel
 import os
 import binascii
 import logging
@@ -16,13 +15,7 @@ from starsessions import SessionMiddleware, InMemoryStore, load_session
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-# Define the model for form data
-class FormData(BaseModel):
-    language: str
-    type: str
-    category: str
-    batch_size: int
-    repeat_times: int
+
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -51,7 +44,7 @@ async def get_session_data(request: Request) -> questionDataObject:
 async def set_session_data(request: Request, obj: questionDataObject):
     await load_session(request)
     serialized = obj.to_dict()
-    logger.info(f"*****< storing session as **** {serialized}")
+    #logger.info(f"*****< storing session as **** {serialized}")
     request.session['data'] = serialized
 
 # Global counter (if needed)

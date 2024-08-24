@@ -12,7 +12,7 @@ RUN mkdir /app/dict
 COPY . /app
 COPY  ./dict /app/dict
 # Install Python dependencies
-RUN pip install --no-cache-dir fastapi uvicorn  python-multipart starlette itsdangerous
+RUN pip install --no-cache-dir fastapi uvicorn  python-multipart starlette itsdangerous starsessions=
 
 
 
