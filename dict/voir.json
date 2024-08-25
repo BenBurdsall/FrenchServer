@@ -1,0 +1,29 @@
+[
+    ["Je vois", "I see"],
+    ["Tu vois", "You see"],
+    ["Il/Elle/On voit", "He/She/It sees"],
+    ["Nous voyons", "We see"],
+    ["Vous voyez", "You (plural/formal) see"],
+    ["Ils/Elles voient", "They see"],
+
+    ["J'ai vu", "I saw"],
+    ["Tu as vu", "You saw"],
+    ["Il/Elle/On a vu", "He/She/It saw"],
+    ["Nous avons vu", "We saw"],
+    ["Vous avez vu", "You (plural/formal) saw"],
+    ["Ils/Elles ont vu", "They saw"],
+
+    ["Je voyais", "I was seeing / I used to see"],
+    ["Tu voyais", "You were seeing / You used to see"],
+    ["Il/Elle/On voyait", "He/She/It was seeing / He/She/It used to see"],
+    ["Nous voyions", "We were seeing / We used to see"],
+    ["Vous voyiez", "You (plural/formal) were seeing / You used to see"],
+    ["Ils/Elles voyaient", "They were seeing / They used to see"],
+
+    ["Je verrai", "I will see"],
+    ["Tu verras", "You will see"],
+    ["Il/Elle/On verra", "He/She/It will see"],
+    ["Nous verrons", "We will see"],
+    ["Vous verrez", "You (plural/formal) will see"],
+    ["Ils/Elles verront", "They will see"]
+]

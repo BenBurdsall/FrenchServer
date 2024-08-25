@@ -1,0 +1,29 @@
+[
+    ["Je bois", "I drink"],
+    ["Tu bois", "You drink"],
+    ["Il/Elle/On boit", "He/She/It drinks"],
+    ["Nous buvons", "We drink"],
+    ["Vous buvez", "You (plural/formal) drink"],
+    ["Ils/Elles boivent", "They drink"],
+
+    ["J'ai bu", "I drank"],
+    ["Tu as bu", "You drank"],
+    ["Il/Elle/On a bu", "He/She/It drank"],
+    ["Nous avons bu", "We drank"],
+    ["Vous avez bu", "You (plural/formal) drank"],
+    ["Ils/Elles ont bu", "They drank"],
+
+    ["Je buvais", "I was drinking / I used to drink"],
+    ["Tu buvais", "You were drinking / You used to drink"],
+    ["Il/Elle/On buvait", "He/She/It was drinking / He/She/It used to drink"],
+    ["Nous buvions", "We were drinking / We used to drink"],
+    ["Vous buviez", "You (plural/formal) were drinking / You used to drink"],
+    ["Ils/Elles buvaient", "They were drinking / They used to drink"],
+
+    ["Je boirai", "I will drink"],
+    ["Tu boiras", "You will drink"],
+    ["Il/Elle/On boira", "He/She/It will drink"],
+    ["Nous boirons", "We will drink"],
+    ["Vous boirez", "You (plural/formal) will drink"],
+    ["Ils/Elles boiront", "They will drink"]
+]

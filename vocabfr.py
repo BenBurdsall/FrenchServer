@@ -11,6 +11,7 @@ handler.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
+VERBLIST = "VERBLIST.json"
 
 # Specify the directory path
 directory_path = Path('./dict')
@@ -18,6 +19,7 @@ directory_path = Path('./dict')
 # Get the list of filenames
 filenames = [file.name for file in directory_path.iterdir() if file.is_file()]
 
+filenames.remove(VERBLIST)
 
 
 def findDuplicate(master,slaveOriginal,ignoreFirst = False):
@@ -58,6 +60,15 @@ def dictToList(dictionary):
 
 
 path = "dict"
+logger.info("loading verb list")
+try:
+    with open(f"{path}/{VERBLIST}", "r") as file:
+        verbs = json.load(file)
+except Exception as fex:
+    logger.error("Could not load  the Verblist file or parse it")
+    logger.error(fex)
+
+
 logger.info(f"Found the following dictionaries: {filenames}")
 masterDictionary = {}
 for dictionaryFile in filenames:

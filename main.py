@@ -8,14 +8,60 @@ import uvicorn
 import json
 
 from frenchQuizzGen import frenchQuizzGen
-from vocabfr import masterDictionary, totalWordCount
+from vocabfr import masterDictionary, totalWordCount, verbs
 from starsessions import SessionMiddleware, InMemoryStore, load_session
 
 # Initialize logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+totalQA = 0
 
 
+# Function to prepare splash page content
+def prepareSplash(splashTemplate):
+
+    marker = "<!–– INSERT CATEGORY ––>"
+    index = splashTemplate.find(marker)
+    if index > 0:
+        index -= 2
+        topPage = splashTemplate[:index]
+        bottomPage = splashTemplate[index:]
+        topPage += f'\n<label><input type="radio" name="category" value="ALL" checked>ALL - ({totalWordCount} words)</label>'
+        catList = list(masterDictionary.keys())
+        # remove all the verbs from the this list
+        for v in verbs:
+            if v not in catList:
+                logger.error(f"Cannot find verb {v} in the category list {catList}")
+            else:
+                catList.remove(v)
+        catList.sort()
+        for category in catList:
+            topPage += f'\n<label><input type="radio" name="category" value="{category}">{category} - ({len(masterDictionary[category])} words)</label>'
+        topPage += '\n <div style="text-align: center; color: red; font-size: 24px;"><br>Verbs<br><br></div>'
+
+        for category in verbs:
+            topPage += f'\n<label><input type="radio" name="category" value="{category}">{category} - ({len(masterDictionary[category])} words)</label>'
+
+        wholePage  = topPage+bottomPage
+
+        return wholePage
+
+    return splashTemplate
+
+try:
+    with open("frenchpage.html", "r") as file:
+        htmltemplate = file.read()
+except FileNotFoundError as fex:
+    logger.error("Could not load template file - check path")
+    htmltemplate = "None - No page loaded "
+
+try:
+    with open("splash.html", "r") as file:
+        splashPageTemplate = file.read()
+        splashPage = prepareSplash(splashPageTemplate)
+except FileNotFoundError as fex:
+    logger.error("Could not load template file - check path")
+    splashPage = "None - No page loaded "
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -28,7 +74,8 @@ store = InMemoryStore()
 app.add_middleware(
     SessionMiddleware,
     store=store,
-    cookie_name="session"
+    cookie_name="session",
+    cookie_https_only=False
 )
 
 
@@ -39,7 +86,7 @@ async def get_session_data(request: Request) -> questionDataObject:
         raise RuntimeError("SessionMiddleware is not set up correctly, or session is accessed too early.")
 
     session_data = request.session.get('data', {})
-    logger.info(f"-------Loading Session data as ----- {session_data}")
+    #logger.info(f"-------Loading Session data as ----- {session_data}")
     return questionDataObject.from_dict(session_data)
 async def set_session_data(request: Request, obj: questionDataObject):
     await load_session(request)
@@ -50,19 +97,6 @@ async def set_session_data(request: Request, obj: questionDataObject):
 # Global counter (if needed)
 counter = 0
 
-# Function to prepare splash page content
-def prepareSplash(splashTemplate):
-    marker = "<!–– INSERT CATEGORY ––>"
-    index = splashTemplate.find(marker)
-    if index > 0:
-        index -= 2
-        topPage = splashTemplate[:index]
-        bottomPage = splashTemplate[index:]
-        topPage += f'\n<label><input type="radio" name="category" value="ALL" checked>ALL - ({totalWordCount} words)</label>'
-        for category in masterDictionary.keys():
-            topPage += f'\n<label><input type="radio" name="category" value="{category}">{category} - ({len(masterDictionary[category])} words)</label>'
-        return topPage + bottomPage
-    return splashTemplate
 
 # Endpoint to handle form submission - of the user choice of the type of questions
 @app.post("/questions", response_class=HTMLResponse)
@@ -82,7 +116,7 @@ async def handle_questions(
         "repeat": str(repeat_times)
     }
     logger.info(f"Params posted are {page}")
-    languageCode = "ENG" if language == "fr_to_en" else "FRE"
+    languageCode = "FRE" if language == "fr_to_en" else "ENG"
 
     if type == "true_random":
         newURL = f"/random/{languageCode}?filter={category}"
@@ -92,7 +126,7 @@ async def handle_questions(
         qDO.batchSize = batch_size
         frenchQuizz = frenchQuizzGen(qDO)
         frenchQuizz.newBatch(category, qDO)  # Generate a new batch of questions - and update the QDO object
-        logger.info(f"Creating a new batch of words - and storing the batch inside the session: {qDO}")
+        logger.info(f"Creating a new batch of words - and storing the batch inside the session:")
         await set_session_data(request, qDO)
         newURL = f"/batch/{languageCode}?filter={category}"
 
@@ -100,7 +134,9 @@ async def handle_questions(
 
 @app.get("/batch/{language}", response_class=HTMLResponse)
 async def batchMode(request: Request, language: str, filter: str = Query(None)):
+    global totalQA
     page = htmltemplate
+    totalQA +=1
 
     await load_session(request)
 
@@ -134,6 +170,9 @@ async def batchMode(request: Request, language: str, filter: str = Query(None)):
 
 @app.get("/random/{language}", response_class=HTMLResponse)
 async def randomQuizz(request: Request, language: str, filter: str = Query(None)):
+    global totalQA
+
+    totalQA +=1
     page = htmltemplate
 
     await load_session(request)
@@ -144,7 +183,7 @@ async def randomQuizz(request: Request, language: str, filter: str = Query(None)
         logger.info("Retrieving current state from session")
         counter = int(request.session.get("counter", 0))
     else:
-        logger.warning("Session was no longer valid, going to home page")
+        logger.warning("****Session was no longer valid, going to home page****")
         return RedirectResponse(url="/", status_code=303)
 
     if filter is None:
@@ -171,6 +210,7 @@ async def randomQuizz(request: Request, language: str, filter: str = Query(None)
 # Get the splash - page and create a session if required
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
+    global  totalQA
     page = splashPage
 
     await load_session(request)
@@ -184,23 +224,11 @@ async def read_root(request: Request):
     else:
         logger.info("Session was found")
 
+    page = page.replace("#QA", str(totalQA))
+
     return HTMLResponse(content=page)
 
 if __name__ == "__main__":
     # Load HTML templates
-    try:
-        with open("frenchpage.html", "r") as file:
-            htmltemplate = file.read()
-    except FileNotFoundError as fex:
-        logger.error("Could not load template file - check path")
-        htmltemplate = "None - No page loaded "
-
-    try:
-        with open("splash.html", "r") as file:
-            splashPageTemplate = file.read()
-            splashPage = prepareSplash(splashPageTemplate)
-    except FileNotFoundError as fex:
-        logger.error("Could not load template file - check path")
-        splashPage = "None - No page loaded "
 
     uvicorn.run(app, host="0.0.0.0", port=80)

@@ -1,0 +1,29 @@
+[
+    ["Je dis", "I say"],
+    ["Tu dis", "You say"],
+    ["Il/Elle/On dit", "He/She/It says"],
+    ["Nous disons", "We say"],
+    ["Vous dites", "You (plural/formal) say"],
+    ["Ils/Elles disent", "They say"],
+
+    ["J'ai dit", "I said"],
+    ["Tu as dit", "You said"],
+    ["Il/Elle/On a dit", "He/She/It said"],
+    ["Nous avons dit", "We said"],
+    ["Vous avez dit", "You (plural/formal) said"],
+    ["Ils/Elles ont dit", "They said"],
+
+    ["Je disais", "I was saying / I used to say"],
+    ["Tu disais", "You were saying / You used to say"],
+    ["Il/Elle/On disait", "He/She/It was saying / He/She/It used to say"],
+    ["Nous disions", "We were saying / We used to say"],
+    ["Vous disiez", "You (plural/formal) were saying / You used to say"],
+    ["Ils/Elles disaient", "They were saying / They used to say"],
+
+    ["Je dirai", "I will say"],
+    ["Tu diras", "You will say"],
+    ["Il/Elle/On dira", "He/She/It will say"],
+    ["Nous dirons", "We will say"],
+    ["Vous direz", "You (plural/formal) will say"],
+    ["Ils/Elles diront", "They will say"]
+]

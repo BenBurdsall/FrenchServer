@@ -1,0 +1,43 @@
+[
+    ["Je vais", "I go"],
+    ["Tu vas", "You go"],
+    ["Il/Elle/On va", "He/She/It goes"],
+    ["Nous allons", "We go"],
+    ["Vous allez", "You (plural/formal) go"],
+    ["Ils/Elles vont", "They go"],
+
+    ["Je suis allé(e)", "I went"],
+    ["Tu es allé(e)", "You went"],
+    ["Il/Elle/On est allé(e)", "He/She/It went"],
+    ["Nous sommes allé(e)s", "We went"],
+    ["Vous êtes allé(e)(s)", "You (plural/formal) went"],
+    ["Ils/Elles sont allé(e)s", "They went"],
+
+    ["J'irai", "I will go"],
+    ["Tu iras", "You will go"],
+    ["Il/Elle/On ira", "He/She/It will go"],
+    ["Nous irons", "We will go"],
+    ["Vous irez", "You (plural/formal) will go"],
+    ["Ils/Elles iront", "They will go"],
+
+    ["J'irais", "I would go"],
+    ["Tu irais", "You would go"],
+    ["Il/Elle/On irait", "He/She/It would go"],
+    ["Nous irions", "We would go"],
+    ["Vous iriez", "You (plural/formal) would go"],
+    ["Ils/Elles iraient", "They would go"],
+
+    ["Je suis allé(e)", "I have gone"],
+    ["Tu es allé(e)", "You have gone"],
+    ["Il/Elle/On est allé(e)", "He/She/It has gone"],
+    ["Nous sommes allé(e)s", "We have gone"],
+    ["Vous êtes allé(e)(s)", "You (plural/formal) have gone"],
+    ["Ils/Elles sont allé(e)s", "They have gone"],
+
+    ["J'étais allé(e)", "I had gone"],
+    ["Tu étais allé(e)", "You had gone"],
+    ["Il/Elle/On était allé(e)", "He/She/It had gone"],
+    ["Nous étions allé(e)s", "We had gone"],
+    ["Vous étiez allé(e)(s)", "You (plural/formal) had gone"],
+    ["Ils/Elles étaient allé(e)s", "They had gone"]
+]

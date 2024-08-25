@@ -1,0 +1,43 @@
+[
+    ["J'ai", "I have"],
+    ["Tu as", "You have"],
+    ["Il/Elle/On a", "He/She/It has"],
+    ["Nous avons", "We have"],
+    ["Vous avez", "You (plural/formal) have"],
+    ["Ils/Elles ont", "They have"],
+
+    ["J'avais", "I had"],
+    ["Tu avais", "You had"],
+    ["Il/Elle/On avait", "He/She/It had"],
+    ["Nous avions", "We had"],
+    ["Vous aviez", "You (plural/formal) had"],
+    ["Ils/Elles avaient", "They had"],
+
+    ["J'aurai", "I will have"],
+    ["Tu auras", "You will have"],
+    ["Il/Elle/On aura", "He/She/It will have"],
+    ["Nous aurons", "We will have"],
+    ["Vous aurez", "You (plural/formal) will have"],
+    ["Ils/Elles auront", "They will have"],
+
+    ["J'aurais", "I would have"],
+    ["Tu aurais", "You would have"],
+    ["Il/Elle/On aurait", "He/She/It would have"],
+    ["Nous aurions", "We would have"],
+    ["Vous auriez", "You (plural/formal) would have"],
+    ["Ils/Elles auraient", "They would have"],
+
+    ["J'ai eu", "I have had"],
+    ["Tu as eu", "You have had"],
+    ["Il/Elle/On a eu", "He/She/It has had"],
+    ["Nous avons eu", "We have had"],
+    ["Vous avez eu", "You (plural/formal) have had"],
+    ["Ils/Elles ont eu", "They have had"],
+
+    ["J'avais eu", "I had had"],
+    ["Tu avais eu", "You had had"],
+    ["Il/Elle/On avait eu", "He/She/It had had"],
+    ["Nous avions eu", "We had had"],
+    ["Vous aviez eu", "You (plural/formal) had had"],
+    ["Ils/Elles avaient eu", "They had had"]
+]

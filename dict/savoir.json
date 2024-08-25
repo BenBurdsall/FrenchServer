@@ -1,0 +1,29 @@
+[
+    ["Je sais", "I know"],
+    ["Tu sais", "You know"],
+    ["Il/Elle/On sait", "He/She/It knows"],
+    ["Nous savons", "We know"],
+    ["Vous savez", "You (plural/formal) know"],
+    ["Ils/Elles savent", "They know"],
+
+    ["J'ai su", "I knew"],
+    ["Tu as su", "You knew"],
+    ["Il/Elle/On a su", "He/She/It knew"],
+    ["Nous avons su", "We knew"],
+    ["Vous avez su", "You (plural/formal) knew"],
+    ["Ils/Elles ont su", "They knew"],
+
+    ["Je savais", "I was knowing / I used to know"],
+    ["Tu savais", "You were knowing / You used to know"],
+    ["Il/Elle/On savait", "He/She/It was knowing / He/She/It used to know"],
+    ["Nous savions", "We were knowing / We used to know"],
+    ["Vous saviez", "You (plural/formal) were knowing / You used to know"],
+    ["Ils/Elles savaient", "They were knowing / They used to know"],
+
+    ["Je saurai", "I will know"],
+    ["Tu sauras", "You will know"],
+    ["Il/Elle/On saura", "He/She/It will know"],
+    ["Nous saurons", "We will know"],
+    ["Vous saurez", "You (plural/formal) will know"],
+    ["Ils/Elles sauront", "They will know"]
+]

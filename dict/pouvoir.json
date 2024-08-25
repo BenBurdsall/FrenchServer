@@ -1,0 +1,29 @@
+[
+    ["Je peux", "I can"],
+    ["Tu peux", "You can"],
+    ["Il/Elle/On peut", "He/She/It can"],
+    ["Nous pouvons", "We can"],
+    ["Vous pouvez", "You (plural/formal) can"],
+    ["Ils/Elles peuvent", "They can"],
+
+    ["J'ai pu", "I could"],
+    ["Tu as pu", "You could"],
+    ["Il/Elle/On a pu", "He/She/It could"],
+    ["Nous avons pu", "We could"],
+    ["Vous avez pu", "You (plural/formal) could"],
+    ["Ils/Elles ont pu", "They could"],
+
+    ["Je pouvais", "I was able to / I used to be able to"],
+    ["Tu pouvais", "You were able to / You used to be able to"],
+    ["Il/Elle/On pouvait", "He/She/It was able to / He/She/It used to be able to"],
+    ["Nous pouvions", "We were able to / We used to be able to"],
+    ["Vous pouviez", "You (plural/formal) were able to / You used to be able to"],
+    ["Ils/Elles pouvaient", "They were able to / They used to be able to"],
+
+    ["Je pourrai", "I will be able to"],
+    ["Tu pourras", "You will be able to"],
+    ["Il/Elle/On pourra", "He/She/It will be able to"],
+    ["Nous pourrons", "We will be able to"],
+    ["Vous pourrez", "You (plural/formal) will be able to"],
+    ["Ils/Elles pourront", "They will be able to"]
+]

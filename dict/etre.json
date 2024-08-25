@@ -1,0 +1,43 @@
+[
+    ["Je suis", "I am"],
+    ["Tu es", "You are"],
+    ["Il/Elle/On est", "He/She/It is"],
+    ["Nous sommes", "We are"],
+    ["Vous êtes", "You (plural/formal) are"],
+    ["Ils/Elles sont", "They are"],
+
+    ["J'étais", "I was"],
+    ["Tu étais", "You were"],
+    ["Il/Elle/On était", "He/She/It was"],
+    ["Nous étions", "We were"],
+    ["Vous étiez", "You (plural/formal) were"],
+    ["Ils/Elles étaient", "They were"],
+
+    ["Je serai", "I will be"],
+    ["Tu seras", "You will be"],
+    ["Il/Elle/On sera", "He/She/It will be"],
+    ["Nous serons", "We will be"],
+    ["Vous serez", "You (plural/formal) will be"],
+    ["Ils/Elles seront", "They will be"],
+
+    ["Je serais", "I would be"],
+    ["Tu serais", "You would be"],
+    ["Il/Elle/On serait", "He/She/It would be"],
+    ["Nous serions", "We would be"],
+    ["Vous seriez", "You (plural/formal) would be"],
+    ["Ils/Elles seraient", "They would be"],
+
+    ["J'ai été", "I have been"],
+    ["Tu as été", "You have been"],
+    ["Il/Elle/On a été", "He/She/It has been"],
+    ["Nous avons été", "We have been"],
+    ["Vous avez été", "You (plural/formal) have been"],
+    ["Ils/Elles ont été", "They have been"],
+
+    ["J'avais été", "I had been"],
+    ["Tu avais été", "You had been"],
+    ["Il/Elle/On avait été", "He/She/It had been"],
+    ["Nous avions été", "We had been"],
+    ["Vous aviez été", "You (plural/formal) had been"],
+    ["Ils/Elles avaient été", "They had been"]
+]

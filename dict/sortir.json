@@ -1,0 +1,29 @@
+[
+    ["Je sors", "I go out"],
+    ["Tu sors", "You go out"],
+    ["Il/Elle/On sort", "He/She/It goes out"],
+    ["Nous sortons", "We go out"],
+    ["Vous sortez", "You (plural/formal) go out"],
+    ["Ils/Elles sortent", "They go out"],
+
+    ["Je suis sorti(e)", "I went out"],
+    ["Tu es sorti(e)", "You went out"],
+    ["Il/Elle/On est sorti(e)", "He/She/It went out"],
+    ["Nous sommes sorti(e)s", "We went out"],
+    ["Vous êtes sorti(e)(s)", "You (plural/formal) went out"],
+    ["Ils/Elles sont sorti(e)s", "They went out"],
+
+    ["Je sortais", "I was going out / I used to go out"],
+    ["Tu sortais", "You were going out / You used to go out"],
+    ["Il/Elle/On sortait", "He/She/It was going out / He/She/It used to go out"],
+    ["Nous sortions", "We were going out / We used to go out"],
+    ["Vous sortiez", "You (plural/formal) were going out / You used to go out"],
+    ["Ils/Elles sortaient", "They were going out / They used to go out"],
+
+    ["Je sortirai", "I will go out"],
+    ["Tu sortiras", "You will go out"],
+    ["Il/Elle/On sortira", "He/She/It will go out"],
+    ["Nous sortirons", "We will go out"],
+    ["Vous sortirez", "You (plural/formal) will go out"],
+    ["Ils/Elles sortiront", "They will go out"]
+]

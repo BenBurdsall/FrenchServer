@@ -1,0 +1,29 @@
+[
+    ["Je veux", "I want"],
+    ["Tu veux", "You want"],
+    ["Il/Elle/On veut", "He/She/It wants"],
+    ["Nous voulons", "We want"],
+    ["Vous voulez", "You (plural/formal) want"],
+    ["Ils/Elles veulent", "They want"],
+
+    ["J'ai voulu", "I wanted"],
+    ["Tu as voulu", "You wanted"],
+    ["Il/Elle/On a voulu", "He/She/It wanted"],
+    ["Nous avons voulu", "We wanted"],
+    ["Vous avez voulu", "You (plural/formal) wanted"],
+    ["Ils/Elles ont voulu", "They wanted"],
+
+    ["Je voulais", "I was wanting / I used to want"],
+    ["Tu voulais", "You were wanting / You used to want"],
+    ["Il/Elle/On voulait", "He/She/It was wanting / He/She/It used to want"],
+    ["Nous voulions", "We were wanting / We used to want"],
+    ["Vous vouliez", "You (plural/formal) were wanting / You used to want"],
+    ["Ils/Elles voulaient", "They were wanting / They used to want"],
+
+    ["Je voudrai", "I will want"],
+    ["Tu voudras", "You will want"],
+    ["Il/Elle/On voudra", "He/She/It will want"],
+    ["Nous voudrons", "We will want"],
+    ["Vous voudrez", "You (plural/formal) will want"],
+    ["Ils/Elles voudront", "They will want"]
+]

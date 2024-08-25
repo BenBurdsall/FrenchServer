@@ -1,0 +1,29 @@
+[
+    ["Je dois", "I have to"],
+    ["Tu dois", "You have to"],
+    ["Il/Elle/On doit", "He/She/It has to"],
+    ["Nous devons", "We have to"],
+    ["Vous devez", "You (plural/formal) have to"],
+    ["Ils/Elles doivent", "They have to"],
+
+    ["J'ai dû", "I had to"],
+    ["Tu as dû", "You had to"],
+    ["Il/Elle/On a dû", "He/She/It had to"],
+    ["Nous avons dû", "We had to"],
+    ["Vous avez dû", "You (plural/formal) had to"],
+    ["Ils/Elles ont dû", "They had to"],
+
+    ["Je devais", "I was having to / I used to have to"],
+    ["Tu devais", "You were having to / You used to have to"],
+    ["Il/Elle/On devait", "He/She/It was having to / He/She/It used to have to"],
+    ["Nous devions", "We were having to / We used to have to"],
+    ["Vous deviez", "You (plural/formal) were having to / You used to have to"],
+    ["Ils/Elles devaient", "They were having to / They used to have to"],
+
+    ["Je devrai", "I will have to"],
+    ["Tu devras", "You will have to"],
+    ["Il/Elle/On devra", "He/She/It will have to"],
+    ["Nous devrons", "We will have to"],
+    ["Vous devrez", "You (plural/formal) will have to"],
+    ["Ils/Elles devront", "They will have to"]
+]

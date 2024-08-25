@@ -1,0 +1,29 @@
+[
+    ["Je pars", "I leave"],
+    ["Tu pars", "You leave"],
+    ["Il/Elle/On part", "He/She/It leaves"],
+    ["Nous partons", "We leave"],
+    ["Vous partez", "You (plural/formal) leave"],
+    ["Ils/Elles partent", "They leave"],
+
+    ["Je suis parti(e)", "I left"],
+    ["Tu es parti(e)", "You left"],
+    ["Il/Elle/On est parti(e)", "He/She/It left"],
+    ["Nous sommes parti(e)s", "We left"],
+    ["Vous êtes parti(e)(s)", "You (plural/formal) left"],
+    ["Ils/Elles sont parti(e)s", "They left"],
+
+    ["Je partais", "I was leaving / I used to leave"],
+    ["Tu partais", "You were leaving / You used to leave"],
+    ["Il/Elle/On partait", "He/She/It was leaving / He/She/It used to leave"],
+    ["Nous partions", "We were leaving / We used to leave"],
+    ["Vous partiez", "You (plural/formal) were leaving / You used to leave"],
+    ["Ils/Elles partaient", "They were leaving / They used to leave"],
+
+    ["Je partirai", "I will leave"],
+    ["Tu partiras", "You will leave"],
+    ["Il/Elle/On partira", "He/She/It will leave"],
+    ["Nous partirons", "We will leave"],
+    ["Vous partirez", "You (plural/formal) will leave"],
+    ["Ils/Elles partiront", "They will leave"]
+]
