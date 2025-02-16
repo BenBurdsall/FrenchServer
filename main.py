@@ -120,6 +120,8 @@ async def handle_questions(
 
     if type == "true_random":
         newURL = f"/random/{languageCode}?filter={category}"
+        qDO = questionDataObject()
+        logger.info("Creating a new session for Random selection")
     else:
         qDO = questionDataObject()
         qDO.noBatchRepeats = repeat_times
@@ -127,9 +129,9 @@ async def handle_questions(
         frenchQuizz = frenchQuizzGen(qDO)
         frenchQuizz.newBatch(category, qDO)  # Generate a new batch of questions - and update the QDO object
         logger.info(f"Creating a new batch of words - and storing the batch inside the session:")
-        await set_session_data(request, qDO)
-        newURL = f"/batch/{languageCode}?filter={category}"
 
+        newURL = f"/batch/{languageCode}?filter={category}"
+    await set_session_data(request, qDO)
     return RedirectResponse(url=newURL, status_code=303)
 
 @app.get("/batch/{language}", response_class=HTMLResponse)
@@ -231,4 +233,12 @@ async def read_root(request: Request):
 if __name__ == "__main__":
     # Load HTML templates
 
-    uvicorn.run(app, host="0.0.0.0", port=80)
+    #uvicorn.run(app,
+    #           host="0.0.0.0",
+    #           port=443,
+    #           ssl_keyfile="./certs/privkey.pem",
+#           ssl_certfile="./certs/fullchain.pem")
+
+    uvicorn.run(app,
+               host="0.0.0.0",
+               port=80)

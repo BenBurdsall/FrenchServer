@@ -8,15 +8,19 @@ RUN apk add --no-cache gcc musl-dev
 WORKDIR /app
 
 RUN mkdir /app/dict
+RUN mkdir /app/certs
+
 # Copy the current directory contents into the container at /app
 COPY . /app
 COPY  ./dict /app/dict
+COPY ./certs /app/certs
+
 # Install Python dependencies
 RUN pip install --no-cache-dir fastapi uvicorn  python-multipart starlette itsdangerous starsessions
 
 
 
-ENV TZ Europe/London
+ENV TZ=Europe/London
 ENV PYTHONUNBUFFERED=1
 
 
